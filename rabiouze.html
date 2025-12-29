@@ -3,8 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gîte Le Rabiouze - Arlempdes</title>
+    
+    <!-- =========================================
+         OPTIMISATION SEO (RÉFÉRENCEMENT)
+         ========================================= -->
+    <!-- TITRE : Précis et descriptif pour Google -->
+    <title>Gîte Le Rabiouze - Location Groupe 15 personnes à Arlempdes (43)</title>
+
+    <!-- DESCRIPTION : Résumé accrocheur pour les résultats de recherche -->
+    <meta name="description" content="Louez Le Rabiouze, ancienne bergerie rénovée pour 15 personnes (22 couchages) au Hameau le Suc, Arlempdes. 330m², 8 chambres, 4 épis. Idéal grands groupes et nature.">
+
+    <!-- MOTS-CLÉS : Pour aider un peu le référencement -->
+    <meta name="keywords" content="gite le rabiouze arlempdes, gite 15 personnes haute loire, gite groupe auvergne, location hameau le suc, ancienne bergerie, gite 4 épis, gite grande capacité">
+
+    <!-- OPEN GRAPH : Pour un beau partage sur Facebook/WhatsApp -->
+    <meta property="og:title" content="Gîte Le Rabiouze - 15 personnes en Haute-Loire">
+    <meta property="og:description" content="Ancienne bergerie de 330m² pour vos réunions de famille. 8 chambres, grand confort (4 épis), calme absolu au Hameau le Suc.">
+    <meta property="og:image" content="images/gite3-grand.jpg">
+    <meta property="og:url" content="https://www.vos-gites-arlempdes.fr/rabiouze.html">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Style pour les sections de pièces */
+        .piece-section {
+            margin-bottom: 40px;
+        }
+        
+        .piece-section h4 {
+            color: #29612c;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        /* Grille photo ajustée */
+        .galerie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .photo-item {
+            break-inside: avoid;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 6px;
+            transition: transform 0.3s;
+            cursor: pointer;
+            background-color: #eee;
+        }
+
+        .photo-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .photo-item p {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* LIGHTBOX STYLES (Identique aux autres pages) */
+        .modal {
+            display: none; position: fixed; z-index: 2000; padding-top: 50px;
+            left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .modal-content {
+            margin: auto; display: block; max-width: 90%; max-height: 85vh;
+            border-radius: 4px; object-fit: contain;
+            animation-name: zoom; animation-duration: 0.6s;
+        }
+        #caption {
+            margin: auto; display: block; width: 80%; max-width: 700px;
+            text-align: center; color: #ccc; padding: 10px 0; height: 150px;
+        }
+        .close-modal {
+            position: absolute; top: 15px; right: 35px; color: #f1f1f1;
+            font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer;
+        }
+        .prev-slide, .next-slide {
+            cursor: pointer; position: absolute; top: 50%; width: auto;
+            padding: 16px; margin-top: -50px; color: white; font-weight: bold;
+            font-size: 20px; transition: 0.6s ease; border-radius: 0 3px 3px 0;
+            user-select: none; background-color: rgba(0,0,0,0.3);
+        }
+        .next-slide { right: 0; border-radius: 3px 0 0 3px; }
+        .prev-slide { left: 0; border-radius: 3px 0 0 3px; }
+        .prev-slide:hover, .next-slide:hover { background-color: rgba(0,0,0,0.8); }
+        @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
+    </style>
 </head>
 <body>
 
@@ -13,47 +112,56 @@
 
     <main>
 
+        <!-- En-tête du gîte -->
         <section class="gite-header">
-            <h2>Le Rabiouze 🌿🌿🌿🌿</h2>
-            <p class="localisation">📍 Arlempdes - Haute-Loire | Ref : H43G023327</p>
+            <h2>Le Rabiouze 🌾🌾🌾🌾</h2>
+            <p class="localisation">📍 Hameau le Suc - Arlempdes (43) | Ref : H43G023327</p>
         </section>
 
+        <!-- Galerie Photos (Résumé en haut) -->
         <section class="galerie">
             <div class="photo-principale">
-                <img src="images/gite3-grand.jpg" alt="Façade du gîte Le Rabiouze">
+                <!-- Remplace par la photo de façade -->
+                <img class="clickable-img" src="images/gite3-grand.jpg" alt="Façade du gîte Le Rabiouze">
             </div>
             <div class="photos-secondaires">
-                <img src="images/gite3-cuisine.jpg" alt="Cuisine">
-                <img src="images/gite3-salon.jpg" alt="Salon">
+                <img class="clickable-img" src="images/gite3-cuisine.jpg" alt="Cuisine" onerror="this.src='images/gite3-grand.jpg'">
+                <img class="clickable-img" src="images/gite3-salon.jpg" alt="Salon" onerror="this.src='images/gite3-grand.jpg'">
             </div>
         </section>
 
+        <!-- Infos clés -->
         <section class="infos-cles">
             <span>👥 15 personnes / 22 couchages</span>
             <span>🛏️ 8 chambres</span>
-            <span>📐 300 m²</span>
-            <span>📶 Wifi</span>
+            <span>📐 330 m²</span>
             <span>🐾 Animaux acceptés</span>
         </section>
 
         <div class="contenu-page">
             
+            <!-- Colonne Gauche : Description et Détails -->
             <div class="colonne-principale">
                 
                 <section id="description">
                     <h3>Description</h3>
-                    <p class="small-text"><em>Annonce d'un particulier</em></p>
                     <p>
-                        C'est à 2h de Lyon et de Clermont-Ferrand que se trouve le village d'Arlempdes, réputé pour son château dominant la Loire. Ici, le célèbre fleuve est encore pur et sauvage ! Situé dans un hameau à proximité d'Arlempdes, <strong>Le Rabiouze</strong> vous accueille.
+                        C'est à 2h de Lyon et de Clermont-Ferrand que se trouve le village d'Arlempdes, réputé pour son château dominant la Loire. Ici, le célèbre fleuve est encore pur et sauvage !
                     </p>
                     <p>
-                        Le gîte est l'ancienne bergerie familiale, siégeant sur <strong>530 m² de terrain clos</strong>.
-                        L'entrée se fait sur la vaste pièce principale avec cuisine ouverte sur la salle de séjour et le salon.
+                        Situé dans un hameau calme à proximité d'Arlempdes ("Hameau le Suc"), <strong>Le Rabiouze</strong> vous accueille dans une ancienne bergerie familiale (moutons) en pierres apparentes, entièrement rénovée (Janvier 2023).
                     </p>
                     <p>
-                        Au RDC, vous disposerez de chambres confortables. À l'étage, les grands espaces permettent d'être à l'aise, même à 15 personnes.
+                        Le gîte siège sur <strong>530 m² de terrain clos</strong>. L'entrée se fait sur la vaste pièce principale avec cuisine ouverte sur la salle de séjour et le salon. Les grands espaces permettent d'être à l'aise pour les réunions de famille ou entre amis.
                     </p>
                     
+                    <h4>Agencement :</h4>
+                    <ul>
+                        <li><strong>Rez-de-chaussée :</strong> Grande pièce à vivre, 2 chambres accessibles.</li>
+                        <li><strong>Étages :</strong> 6 autres chambres confortables et sanitaires.</li>
+                    </ul>
+                    
+                    <!-- Bloc Hôte -->
                     <div class="hote-box">
                         <p>Vos hôtes : <strong>Henri et Laurent</strong></p>
                         <p style="font-size:0.9em;">Langues parlées : Français, Anglais. Agréé Gîtes de France® depuis 2023.</p>
@@ -66,16 +174,16 @@
                         <div style="flex: 1; min-width: 200px;">
                             <h4>🏠 Intérieur</h4>
                             <ul>
-                                <li>Télévision & Wifi</li>
-                                <li>Lave-vaisselle</li>
-                                <li>Lave-linge</li>
+                                <li>Télévision</li>
+                                <li>Lave-vaisselle & Lave-linge</li>
                                 <li>Micro-ondes & Congélateur</li>
+                                <li>Chauffage central</li>
                             </ul>
                         </div>
                         <div style="flex: 1; min-width: 200px;">
                             <h4>🌳 Extérieur</h4>
                             <ul>
-                                <li>Jardin clos & Terrain privé</li>
+                                <li>Jardin clos & Terrain privé (530 m²)</li>
                                 <li>Terrasse & Barbecue</li>
                                 <li>Parking privé</li>
                             </ul>
@@ -83,8 +191,8 @@
                     </div>
                     
                     <div style="margin-top: 15px;">
-                        <h4>✨ Services inclus</h4>
-                        <p>Draps et linge fournis, Linge de toilette et de table, Ménage de fin de séjour, Chauffage et Électricité inclus, Équipement bébé.</p>
+                        <h4>🚿 Sanitaires</h4>
+                        <p>1 Salle de bain (Sdb), 5 Salles d'eau (Sde), 5 WC.</p>
                     </div>
                 </section>
                 
@@ -92,20 +200,78 @@
                     <h3>Thématiques</h3>
                     <div class="themes-grid">
                         <div class="theme-item">🌲 Ecogîte</div>
+                        <div class="theme-item">♿ Tourisme & Handicap</div>
                         <div class="theme-item">⛰️ Montagne</div>
-                        <div class="theme-item">🐄 Campagne</div>
+                        <div class="theme-item">🎿 Ski (19 km)</div>
                         <div class="theme-item">💻 Télétravail</div>
-                        <div class="theme-item">🎿 Ski</div>
                     </div>
+                </section>
+
+                <!-- NOUVELLE SECTION : VISITE DÉTAILLÉE -->
+                <section id="galerie-complete">
+                    <h3>Visite détaillée</h3>
+                    <p>Cliquez sur une image pour l'agrandir :</p>
+                    
+                    <!-- 1. PIÈCES DE VIE -->
+                    <div class="piece-section">
+                        <h4>🛋️ Salon, Salle à manger & Cuisine</h4>
+                        <div class="galerie-grid">
+                            <!-- Remplace par les vrais noms de fichiers quand tu les auras -->
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/gite3-salon.jpg" alt="Salon" onerror="this.src='images/gite3-grand.jpg'"><p>Salon</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/gite3-cuisine.jpg" alt="Cuisine" onerror="this.src='images/gite3-grand.jpg'"><p>Cuisine</p></div>
+                            <!-- Ajoute d'autres photos ici -->
+                        </div>
+                    </div>
+
+                    <!-- 2. LES CHAMBRES -->
+                    <div class="piece-section">
+                        <h4>🛏️ Les Chambres (8)</h4>
+                        <div class="galerie-grid">
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/gite3-chambre1.jpg" alt="Chambre 1" onerror="this.src='images/gite3-grand.jpg'"><p>Chambre 1</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/gite3-chambre2.jpg" alt="Chambre 2" onerror="this.src='images/gite3-grand.jpg'"><p>Chambre 2</p></div>
+                            <!-- Continue pour les autres chambres -->
+                        </div>
+                    </div>
+
+                    <!-- 3. SANITAIRES -->
+                    <div class="piece-section">
+                        <h4>🚿 Sanitaires</h4>
+                        <div class="galerie-grid">
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/gite3-sdb.jpg" alt="Salle de bain" onerror="this.src='images/gite3-grand.jpg'"><p>Salle de bain</p></div>
+                        </div>
+                    </div>
+
+                    <!-- 4. EXTÉRIEURS -->
+                    <div class="piece-section">
+                        <h4>🌳 Extérieurs</h4>
+                        <div class="galerie-grid">
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/gite3-jardin.jpg" alt="Jardin" onerror="this.src='images/gite3-grand.jpg'"><p>Jardin</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/gite3-terrasse.jpg" alt="Terrasse" onerror="this.src='images/gite3-grand.jpg'"><p>Terrasse</p></div>
+                        </div>
+                    </div>
+
                 </section>
 
                  <section id="localisation">
                     <h3>Localisation</h3>
-                    <img src="images/carte-arlempdes.jpg" alt="Carte localisation Arlempdes" style="width:100%; border-radius:8px;">
-                    <p><em>Arlempdes, Haute-Loire (43)</em></p>
+                    <p><strong>Adresse approximative :</strong> Hameau le Suc, 43490 Arlempdes</p>
+                    
+                    <!-- Carte Google Maps centrée sur le Hameau le Suc -->
+                    <div style="width: 100%; height: 400px; border-radius: 8px; overflow: hidden; margin-top: 15px; border: 1px solid #eee;">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0" 
+                            loading="lazy" 
+                            allowfullscreen
+                            src="https://maps.google.com/maps?q=Hameau%20le%20Suc%2C%2043490%20Arlempdes&t=k&z=16&ie=UTF8&iwloc=&output=embed">
+                        </iframe>
+                    </div>
+                    <p style="font-size: 0.9em; color: #666; margin-top: 5px;"><em>Vue satellite du Hameau le Suc (où se situent L'Estaou et Le Rabiouze).</em></p>
                 </section>
             </div>
 
+            <!-- Colonne Droite : Infos Séjour (Sticky) -->
             <aside class="colonne-laterale">
                 <div class="carte-resa">
                     <h3>Votre séjour</h3>
@@ -122,8 +288,11 @@
                     <hr>
                     
                     <div style="text-align: left; font-size: 0.9em; margin-top: 15px;">
-                        <p><strong>✅ Le prix comprend :</strong><br>
-                        Charges, Chauffage, Draps, Linge de maison, Ménage.</p>
+                        <p><strong>🛠️ Options (non inclus) :</strong><br>
+                        - Draps 1 pers : 15 € / paire<br>
+                        - Draps 2 pers : 15 € / paire<br>
+                        - Linge de toilette : 15 € / pers<br>
+                        - Linge de maison : 15 € / séjour</p>
                         
                         <p><strong>🐾 Animaux :</strong><br>
                         Supplément 30 € / séjour</p>
@@ -143,8 +312,62 @@
     <!-- LE FOOTER EST GÉRÉ PAR JAVASCRIPT (layout.js) -->
     <div id="footer-placeholder"></div>
 
-    <!-- SCRIPT INDISPENSABLE POUR AFFICHER LE MENU ET LE PIED DE PAGE -->
+    <!-- ELEMENT MODAL POUR LA LIGHTBOX -->
+    <div id="lightbox" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="lightbox-img">
+        <div id="caption"></div>
+        <a class="prev-slide" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next-slide" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <!-- SCRIPT INDISPENSABLE POUR AFFICHER LE MENU ET LE PIED DE PAGE + LIGHTBOX -->
     <script src="layout.js"></script>
+    <script>
+        // SCRIPT POUR LA LIGHTBOX
+        const images = document.querySelectorAll('.clickable-img');
+        const modal = document.getElementById('lightbox');
+        const modalImg = document.getElementById("lightbox-img");
+        const captionText = document.getElementById("caption");
+        let currentIndex = 0;
+
+        images.forEach((img, index) => {
+            img.addEventListener('click', function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt || this.nextElementSibling?.innerText || ""; 
+                currentIndex = index; 
+            });
+        });
+
+        const span = document.getElementsByClassName("close-modal")[0];
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function changeSlide(n) {
+            currentIndex += n;
+            if (currentIndex >= images.length) { currentIndex = 0; }
+            if (currentIndex < 0) { currentIndex = images.length - 1; }
+            const nextImg = images[currentIndex];
+            modalImg.src = nextImg.src;
+            captionText.innerHTML = nextImg.alt || nextImg.nextElementSibling?.innerText || "";
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (modal.style.display === "block") {
+                if (event.key === "ArrowLeft") changeSlide(-1);
+                else if (event.key === "ArrowRight") changeSlide(1);
+                else if (event.key === "Escape") modal.style.display = "none";
+            }
+        });
+    </script>
 
 </body>
 </html>

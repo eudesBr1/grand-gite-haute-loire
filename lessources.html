@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- =========================================
+         OPTIMISATION SEO (RÉFÉRENCEMENT)
+         ========================================= -->
+    <!-- TITRE : Précis et descriptif pour Google -->
+    <title>Gîte Les Sources - Location 9 personnes à Arlempdes (Haute-Loire)</title>
+
+    <!-- DESCRIPTION : Résumé accrocheur pour les résultats de recherche -->
+    <meta name="description" content="Location gîte de charme 'Les Sources' (9 pers) au cœur du village médiéval d'Arlempdes (43). Maison en pierre unique située dans l'enceinte du château. Idéal famille, pêche, randonnée.">
+
+    <!-- MOTS-CLÉS : Pour aider un peu le référencement -->
+    <meta name="keywords" content="gite les sources arlempdes, location vacances haute loire, gite 9 personnes auvergne, plus beaux villages de france, gite chateau, pêche loire, gite pierre">
+
+    <!-- OPEN GRAPH : Pour un beau partage sur Facebook/WhatsApp -->
+    <meta property="og:title" content="Gîte Les Sources - Arlempdes (Haute-Loire)">
+    <meta property="og:description" content="Séjournez dans l'enceinte du château d'Arlempdes ! Gîte authentique pour 9 personnes, classé 3 épis.">
+    <meta property="og:image" content="images/sources/Face avant-779.JPG">
+    <meta property="og:url" content="https://www.vos-gites-arlempdes.fr/lessources.html">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Style pour les sections de pièces */
+        .piece-section {
+            margin-bottom: 40px; /* Espace entre les groupes de photos */
+        }
+        
+        .piece-section h4 {
+            color: #2e7d32;
+            border-bottom: 2px solid #eee; /* Petite ligne de séparation */
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        /* Grille photo ajustée */
+        .galerie-grid {
+            display: grid;
+            /* On met 180px min pour essayer d'en caser 4 ou 5 par ligne sur PC */
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px; /* Espace plus fin entre les photos */
+        }
+
+        .photo-item {
+            break-inside: avoid;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 160px; /* Hauteur un peu plus petite pour voir plus de photos */
+            object-fit: cover;
+            border-radius: 6px;
+            transition: transform 0.3s;
+            cursor: pointer; /* Indique qu'on peut cliquer */
+            background-color: #eee; /* Gris clair en attendant l'image */
+        }
+
+        .photo-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .photo-item p {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* =========================================
+           STYLE DE LA LIGHTBOX (VUE AGRANDIE)
+           ========================================= */
+        .modal {
+            display: none; /* Caché par défaut */
+            position: fixed;
+            z-index: 2000; /* Au-dessus de tout */
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9); /* Fond noir opaque */
+        }
+
+        /* L'image en grand */
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85vh; /* 85% de la hauteur de l'écran */
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        /* Légende */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Bouton Fermer (X) */
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Boutons Précédent / Suivant */
+        .prev-slide, .next-slide {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.3); /* Fond léger pour voir les flèches */
+        }
+
+        .next-slide {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .prev-slide {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev-slide:hover, .next-slide:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Animation zoom */
+        .modal-content, #caption {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LE HEADER EST GÉRÉ PAR JAVASCRIPT (layout.js) -->
+    <div id="header-placeholder"></div>
+
+    <main>
+
+        <!-- En-tête du gîte -->
+        <section class="gite-header">
+            <h2>Les Sources 🌊</h2>
+            <p class="localisation">📍 Village d’Arlempdes (43) | Ref : H43G006192</p>
+        </section>
+
+        <!-- Galerie Photos (Résumé en haut) -->
+        <section class="galerie">
+            <div class="photo-principale">
+                <img class="clickable-img" src="images/sources/Face avant-779.JPG" alt="Façade du gîte Les Sources">
+            </div>
+            <div class="photos-secondaires">
+                <img class="clickable-img" src="images/sources/Salon cheminee-657.JPG" alt="Salon Cheminée" onerror="this.src='images/sources/Face avant-779.JPG'">
+                <img class="clickable-img" src="images/sources/Jardin vue chateau-818.JPG" alt="Vue Château" onerror="this.src='images/sources/Face avant-779.JPG'">
+            </div>
+        </section>
+
+        <!-- Infos clés -->
+        <section class="infos-cles">
+            <span>👥 9 personnes</span>
+            <span>🛏️ 3 chambres</span>
+            <span>📐 120 m²</span>
+            <span>🐾 Animaux acceptés</span>
+        </section>
+
+        <div class="contenu-page">
+            
+            <!-- Colonne Gauche : Description et Détails -->
+            <div class="colonne-principale">
+                
+                <section id="description">
+                    <h3>Description</h3>
+                    <p>
+                        Maison en pierres apparentes (120 m²), située de manière exceptionnelle <strong>dans l’enceinte délimitée par les remparts du 1er château fort pittoresque sur La Loire</strong>.
+                    </p>
+                    <p>
+                        Arlempdes (altitude 870 m) est classé <strong>"Un des plus beaux villages de France"</strong>. Ce gîte est situé à la pointe sud de l'Auvergne, à quelques kilomètres de l'Ardèche et de la Lozère.
+                    </p>
+                    <p>
+                        Rénovée avec soin (mi 1996 & rénovation 2017), la maison respecte son cachet d'origine tout en offrant tout le confort moderne.
+                    </p>
+                    
+                    <h4>Agencement :</h4>
+                    <ul>
+                        <li><strong>Rez-de-chaussée :</strong> Salon avec cheminée, cuisine équipée, salle à manger.</li>
+                        <li><strong>Étages :</strong> 3 chambres confortables, sanitaires.</li>
+                    </ul>
+                    
+                    <!-- Bloc Hôte -->
+                    <div class="hote-box">
+                        <p>Vos hôtes : <strong>Henri et Laurent</strong></p>
+                        <p style="font-size:0.9em;">Langues parlées : Français, Anglais. Agréé Gîtes de France®.</p>
+                    </div>
+                </section>
+
+                <section id="equipements">
+                    <h3>Équipements & Services</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <h4>🏠 Intérieur</h4>
+                            <ul>
+                                <li>Cheminée</li>
+                                <li>Télévision</li>
+                                <li>Lave-vaisselle & Lave-linge</li>
+                                <li>Micro-ondes & Congélateur</li>
+                            </ul>
+                        </div>
+                        <div style="flex: 1; min-width: 200px;">
+                            <h4>🌳 Extérieur</h4>
+                            <ul>
+                                <li>Terrain clos (160 m²)</li>
+                                <li>Terrasse & Balcon</li>
+                                <li>Barbecue</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <h4>🚿 Sanitaires</h4>
+                        <p>1 Salle de bain (Sdb), 1 Salle d'eau (Sde), 2 WC.</p>
+                    </div>
+                </section>
+                
+                <section id="thematiques">
+                    <h3>Thématiques</h3>
+                    <div class="themes-grid">
+                        <div class="theme-item">🏰 Patrimoine</div>
+                        <div class="theme-item">⛰️ Montagne</div>
+                        <div class="theme-item">🎿 Ski (20 km)</div>
+                        <div class="theme-item">🎣 Pêche</div>
+                    </div>
+                </section>
+
+                <!-- NOUVELLE SECTION : VISITE DÉTAILLÉE PAR PIÈCE -->
+                <section id="galerie-complete">
+                    <h3>Visite détaillée</h3>
+                    <p>Cliquez sur une image pour l'agrandir :</p>
+                    
+                    <!-- 1. PIÈCES DE VIE -->
+                    <div class="piece-section">
+                        <h4>🛋️ Salon, Salle à manger & Cuisine</h4>
+                        <div class="galerie-grid">
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Salon-639.JPG" alt="Salon"><p>Salon</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Salon-642.JPG" alt="Salon"><p>Coin détente</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Salon cheminee-657.JPG" alt="Cheminée"><p>Coin Cheminée</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Salle manger-640.JPG" alt="Salle à Manger"><p>Salle à manger</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Salle à manger-643.JPG" alt="Salle à Manger"><p>Espace repas</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Cuisine-647.JPG" alt="Cuisine"><p>Cuisine</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Cuisine-648.JPG" alt="Cuisine"><p>Cuisine équipée</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Cuisine-654.JPG" alt="Cuisine"><p>Détails cuisine</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Cuisine-656.JPG" alt="Cuisine"><p>Vue cuisine</p></div>
+                        </div>
+                    </div>
+
+                    <!-- 2. LES CHAMBRES -->
+                    <div class="piece-section">
+                        <h4>🛏️ Les Chambres</h4>
+                        <div class="galerie-grid">
+                            <!-- Chambre 1 -->
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Ch 1-711- Chien de berger.JPG" alt="Chambre 1"><p>Ch. 1 - Chien de berger</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Ch1-714 - lits.JPG" alt="Chambre 1"><p>Chambre 1 - Lits</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Ch1-721 - lits.JPG" alt="Chambre 1"><p>Chambre 1 - Vue</p></div>
+                            
+                            <!-- Chambre 2 -->
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Ch 2-692 - Moutons.JPG" alt="Chambre 2"><p>Ch. 2 - Moutons</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Ch2-700 - lits.JPG" alt="Chambre 2"><p>Chambre 2 - Lits</p></div>
+
+                            <!-- Chambre 3 -->
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Ch3-674 - lits (1).JPG" alt="Chambre 3"><p>Chambre 3</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Ch3-674 - lits (2).JPG" alt="Chambre 3"><p>Chambre 3 - Lits</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Ch3-674 - lits (3).JPG" alt="Chambre 3"><p>Chambre 3 - Détail</p></div>
+                        </div>
+                    </div>
+
+                    <!-- 3. SANITAIRES -->
+                    <div class="piece-section">
+                        <h4>🚿 Sanitaires</h4>
+                        <div class="galerie-grid">
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/wc sde sdb-737.JPG" alt="Sanitaires"><p>Salle de bain</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/wc sde sdb-744.JPG" alt="Sanitaires"><p>Salle d'eau</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/wc sde sdb- 752.JPG" alt="Sanitaires"><p>Lavabo</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/wc sde sdb-759.JPG" alt="Sanitaires"><p>Douche</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/wc sde sdb-760.JPG" alt="Sanitaires"><p>WC</p></div>
+                        </div>
+                    </div>
+
+                    <!-- 4. EXTÉRIEURS & VILLAGE -->
+                    <div class="piece-section">
+                        <h4>🌳 Extérieurs & Village</h4>
+                        <div class="galerie-grid">
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Face avant-779.JPG" alt="Façade"><p>Façade du gîte</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Jardin-784.JPG" alt="Jardin"><p>Jardin</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Jardin vue chateau-818.JPG" alt="Vue Château"><p>Vue sur le Château</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Jardin-883.JPG" alt="Jardin"><p>Espace détente</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Vue balcon-680.JPG" alt="Vue Balcon"><p>Vue du balcon</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Vue terrain vers vallee-890.JPG" alt="Vue Vallée"><p>Vue sur la vallée</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Plage Arlempdes-858.JPG" alt="Plage"><p>Plage d'Arlempdes</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Village Arlempdes-839.JPG" alt="Village"><p>Le Village</p></div>
+                            <div class="photo-item"><img class="clickable-img" loading="lazy" decoding="async" src="images/sources/Village Arlempdes-862.JPG" alt="Village"><p>Ruelles</p></div>
+                        </div>
+                    </div>
+
+                </section>
+
+                 <section id="localisation">
+                    <h3>Localisation</h3>
+                    <p><strong>Adresse exacte :</strong> 35 Impasse du Couvent, 43490 Arlempdes</p>
+                    
+                    <!-- Carte Google Maps en vue Satellite/Hybride -->
+                    <div style="width: 100%; height: 400px; border-radius: 8px; overflow: hidden; margin-top: 15px; border: 1px solid #eee;">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0" 
+                            loading="lazy" 
+                            allowfullscreen
+                            src="https://maps.google.com/maps?q=35%20Impasse%20du%20Couvent%2C%2043490%20Arlempdes&t=k&z=17&ie=UTF8&iwloc=&output=embed">
+                        </iframe>
+                    </div>
+                    <p style="font-size: 0.9em; color: #666; margin-top: 5px;"><em>Vue satellite du gîte Les Sources (au cœur du village, près du château).</em></p>
+                </section>
+            </div>
+
+            <!-- Colonne Droite : Infos Séjour (Sticky) -->
+            <aside class="colonne-laterale">
+                <div class="carte-resa">
+                    <h3>Votre séjour</h3>
+                    <p>Logement entier (9 pers.)</p>
+                    <!-- Prix à vérifier, j'ai mis une valeur indicative basée sur les autres -->
+                    <p class="prix">À partir de <strong>123 €</strong> / nuit</p> 
+                    
+                    <div class="dates-simul">
+                        <p>📅 Arrivée — 📅 Départ</p>
+                    </div>
+
+                    <a href="contact.html" class="btn btn-full">Demander une réservation</a>
+                    <p class="small-text">Contactez-nous directement ou passez par l'agence</p>
+                    
+                    <hr>
+                    
+                    <div style="text-align: left; font-size: 0.9em; margin-top: 15px;">
+                        <p><strong>✅ Inclus dans le prix :</strong><br>
+                        Charges, Chauffage, Électricité, Ménage.</p>
+
+                        <p><strong>🛠️ Options (non inclus) :</strong><br>
+                        - Draps 1 pers : 15 € / paire<br>
+                        - Draps 2 pers : 15 € / paire<br>
+                        - Linge de toilette : 15 € / pers<br>
+                        - Linge de maison : 15 € / séjour</p>
+                        
+                        <p><strong>🐾 Animaux :</strong><br>
+                        Supplément 30 € / séjour</p>
+                        
+                        <p><strong>💳 Paiements :</strong><br>
+                        CB, Visa, Espèces, Chèques vacances</p>
+                        
+                        <p><strong>🔒 Caution :</strong> 300 €</p>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- LE FOOTER EST GÉRÉ PAR JAVASCRIPT (layout.js) -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ELEMENT MODAL POUR LA LIGHTBOX -->
+    <div id="lightbox" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="lightbox-img">
+        <div id="caption"></div>
+        <a class="prev-slide" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next-slide" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <!-- SCRIPT INDISPENSABLE POUR AFFICHER LE MENU ET LE PIED DE PAGE + LIGHTBOX -->
+    <script src="layout.js"></script>
+    <script>
+        // SCRIPT POUR LA LIGHTBOX
+        const images = document.querySelectorAll('.clickable-img');
+        const modal = document.getElementById('lightbox');
+        const modalImg = document.getElementById("lightbox-img");
+        const captionText = document.getElementById("caption");
+        let currentIndex = 0;
+
+        images.forEach((img, index) => {
+            img.addEventListener('click', function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt || this.nextElementSibling?.innerText || ""; 
+                currentIndex = index; 
+            });
+        });
+
+        const span = document.getElementsByClassName("close-modal")[0];
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function changeSlide(n) {
+            currentIndex += n;
+            if (currentIndex >= images.length) { currentIndex = 0; }
+            if (currentIndex < 0) { currentIndex = images.length - 1; }
+            const nextImg = images[currentIndex];
+            modalImg.src = nextImg.src;
+            captionText.innerHTML = nextImg.alt || nextImg.nextElementSibling?.innerText || "";
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (modal.style.display === "block") {
+                if (event.key === "ArrowLeft") changeSlide(-1);
+                else if (event.key === "ArrowRight") changeSlide(1);
+                else if (event.key === "Escape") modal.style.display = "none";
+            }
+        });
+    </script>
+
+</body>
+</html>

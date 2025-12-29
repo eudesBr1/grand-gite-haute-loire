@@ -3,6 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- =========================================
+         OPTIMISATION SEO (RÉFÉRENCEMENT)
+         ========================================= -->
+    <!-- Le Titre (Ce qui apparaît en bleu sur Google) -->
+    <title>Grands Gîtes de Charme en Haute-Loire | Location Vacances à Arlempdes (43)</title>
+
+    <!-- La Description (Le texte gris sous le lien Google) -->
+    <meta name="description" content="Découvrez nos 3 gîtes authentiques (9 à 15 personnes) à Arlempdes, classé 'Plus Beaux Villages de France'. Idéal groupes, familles, randonnée et nature en Auvergne.">
+
+    <!-- Les Mots-clés -->
+    <meta name="keywords" content="gite haute loire, arlempdes, location vacances 43, gite groupe auvergne, plus beaux villages de france, gite peche, gite randonnée, ecogite">
+
+    <!-- Open Graph (Pour que le lien soit beau sur Facebook/WhatsApp) -->
+    <meta property="og:title" content="Vacances Nature en Haute-Loire - Gîtes Arlempdes">
+    <meta property="og:description" content="3 gîtes de caractère (9-15 pers) dans un cadre exceptionnel. Village médiéval ou pleine nature, à vous de choisir !">
+    <meta property="og:image" content="images/sources/Face avant-779.JPG"> <!-- Image de partage -->
+    <meta property="og:url" content="https://www.vos-gites-arlempdes.fr/">
+    <meta property="og:type" content="website">
+
+    <!-- Lien vers le fichier CSS principal -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- STYLE SPÉCIFIQUE À L'ACCUEIL -->
+    <style>
+        /* 1. Mise en page générale */
+        main {
+            max-width: 95% !important;
+        }
+
+        /* AJOUT : Image de fond semi-transparente */
+        body::before {
+            content: "";
+            position: fixed; /* L'image reste fixe quand on scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Mise à jour du chemin de l'image */
+            background-image: url('images/logos/vueSatellite.png');
+            background-size: cover; /* Couvre tout l'écran */
+            background-position: center;
+            opacity: 0.4; /* Opacité à 40% pour l'effet semi-transparent */
+            z-index: -1; /* Place l'image derrière le contenu */
+        }
+
+        /* 2. Grille des gîtes */
+        .gites {
+            display: grid;
+            /* FORCE L'AFFICHAGE SUR 3 COLONNES CÔTE À CÔTE */
+            grid-template-columns: 1fr 1fr 1fr; 
+            gap: 30px; /* Espace entre les cartes */
+        }
+        
+        /* SÉCURITÉ MOBILE : Si l'écran est petit (tablette/téléphone), on les empile */
+        @media (max-width: 1000px) {
+            .gites {
+                grid-template-columns: 1fr; /* Une seule colonne */
+            }
+        }
+
+        /* 3. Design de la carte */
+        .gite {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            padding: 0;
+        }
+
     <title>Gîtes en Haute-Loire</title>
     <meta name="description" content="Découvrez nos 3 gîtes en Haute-Loire, au cœur de la nature. Calme, confort et authenticité pour vos vacances.">
     <!-- Lien vers le fichier CSS principal -->
@@ -42,6 +116,13 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
 
+        /* 4. Images */
+        .gite img {
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: none;
+            margin: 0;
         /* 4. Intégration de l'image (Plus haute et immersive) */
         .gite img {
             height: 300px; /* On augmente la hauteur (c'était 200px) */
@@ -54,6 +135,13 @@
         }
 
         .gite:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 5. Contenu texte */
+        .gite-content {
+            padding: 25px;
+            flex-grow: 1;
             transform: scale(1.05); /* Zoom léger sur l'image */
         }
 
@@ -65,12 +153,107 @@
             flex-direction: column;
             justify-content: space-between;
             background: white;
+            position: relative;
+            z-index: 1;
             position: relative; /* Pour gérer la superposition */
             z-index: 1; /* Reste au dessus de l'image */
         }
 
         .gite h3 {
             font-size: 1.5em;
+            margin-bottom: 5px;
+            color: #2e7d32;
+        }
+
+        /* NOUVEAU : Style pour les infos techniques (lits, surface...) */
+        .gite-infos {
+            list-style: none; /* Enlève les points moches */
+            padding: 0;
+            margin: 15px 0;
+            font-size: 0.9em;
+            color: #555;
+            background-color: #f9f9f9; /* Petit fond gris */
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        
+        .gite-infos li {
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        .localisation-tag {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .ref-tag {
+            font-size: 0.8em;
+            color: #999;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Style des badges (Épis, Labels...) */
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center; /* Aligne les images et le texte verticalement */
+        }
+
+        /* Logos côte à côte */
+        .logos {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            margin-bottom: 15px;
+            width: auto;
+            max-width: 250px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #e8f5e9; /* Fond vert très clair */
+            color: #2e7d32;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            border: 1px solid #c8e6c9;
+        }
+
+        /* NOUVEAU : Style pour les images de logos */
+        .badge-img {
+            height: 25px; /* Ajusté pour bien voir le logo */
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .badge.gris {
+            background-color: #f5f5f5;
+            color: #666;
+            border-color: #e0e0e0;
+        }
+        
+        /* Modifié : Ajout d'un fond blanc pour la lisibilité sur l'image satellite */
+        .presentation-box {
+            max-width: 1000px; /* Largeur augmentée */
+            margin: 0 auto 50px auto;
+            text-align: center;
+            font-size: 1.1em;
+            background-color: rgba(255, 255, 255, 0.92); /* Fond blanc 92% opaque */
+            padding: 30px; /* Espace intérieur */
+            border-radius: 15px; /* Coins arrondis */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Légère ombre */
             margin-bottom: 10px;
             color: #2e7d32;
         }
@@ -91,6 +274,20 @@
 
     <main>
 
+        <!-- Présentation Fusionnée (Tout dans la même boite, pas de <br> inutiles) -->
+        <section class="presentation-box">
+            <h2>Bienvenue en Haute-Loire</h2>
+            <p>
+                Nous vous proposons <strong>trois gîtes tout confort</strong> situés sur la commune d'Arlempdes (43),
+                village classé parmi les <strong>"Plus Beaux Villages de France"</strong>.
+            </p>
+            <p style="margin-top: 15px;">
+                <strong>Nos localisations :</strong><br>
+                Le gîte <em>"Les Sources"</em> est niché directement au cœur du <strong>village médiéval</strong>, dans l'enceinte même du château.<br>
+                Les gîtes <em>"L'Estaou"</em> et <em>"Le Rabiouze"</em> sont situés au calme dans le <strong>Hameau le Suc</strong>, à quelques minutes du bourg, en pleine nature.
+            </p>
+            <p style="margin-top: 15px;">
+                Que vous soyez en famille, entre amis ou en couple, venez profiter de paysages magnifiques et d'un patrimoine naturel exceptionnel pour des vacances reposantes.
         <!-- Présentation -->
         <section class="presentation">
             <h2>Bienvenue</h2>
@@ -105,6 +302,42 @@
         <!-- Liste des gîtes -->
         <section class="gites">
             
+            <!-- GÎTE 1 - LES SOURCES (9 pers) -->
+            <article class="gite">
+                <!-- Image façade -->
+                <img src="images/sources/Face avant-779.JPG" alt="Façade du gîte Les Sources">
+                <div class="gite-content">
+                    <div>
+                        <h3>Gîte 1 – Les Sources</h3>
+                        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                            <span class="localisation-tag">📍 Village d’Arlempdes (43)</span>
+                            <span class="ref-tag">Ref : H43G006192</span>
+                        </div>
+
+                        <!-- Zone Logos Spécifiques -->
+                        <div class="logos">
+                            <!-- 3 épis + Plus beau village -->
+                            <img src="images/logos/GiteDeFrance_3Epis.png" alt="3 Épis" class="badge-img">
+                            <img src="images/logos/Les_Plus_Beaux_Villages_de_France_logo.png" alt="Plus beaux villages de France" class="badge-img" style="height:35px;">
+                            <img src="images/logos/peche.jpg" alt="Label Pêche" class="badge-img">
+                        </div>
+
+                        <div class="badges">
+                            <span class="badge">🏰 Patrimoine</span>
+                            <span class="badge gris">⛰️ Montagne</span>
+                            <span class="badge gris">❄️ Ski</span>
+                        </div>
+
+                        <!-- Bloc Infos Techniques -->
+                        <ul class="gite-infos">
+                            <li>👥 <strong>9 personnes</strong></li>
+                            <li>🛏️ <strong>3 chambres</strong></li>
+                            <li>📐 <strong>120 m²</strong></li>
+                            <li>🚿 1 Sdb, 1 Sde, 2 WC</li>
+                            <li>🐾 Animaux acceptés</li>
+                        </ul>
+
+                        <p style="font-size:0.9em; margin-bottom:10px;">Maison en pierres apparentes située exceptionnellement dans l'enceinte des remparts du château fort.</p>
             <!-- GÎTE 1 -->
             <article class="gite">
                 <!-- Image corrigée avec slash / -->
@@ -118,6 +351,40 @@
                 </div>
             </article>
 
+            <!-- GÎTE 2 - ESTAOU (15 pers) -->
+            <article class="gite">
+                <!-- Image façade -->
+                <img src="images/estaou/Face avant-433.JPG" alt="Façade du gîte L'Estaou">
+                <div class="gite-content">
+                    <div>
+                        <h3>Gîte 2 – L’Estaou</h3>
+                        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                            <span class="localisation-tag">📍 Hameau le Suc (43)</span>
+                            <span class="ref-tag">Ref : H43G006238</span>
+                        </div>
+
+                        <!-- Zone Logos -->
+                        <div class="logos">
+                            <img src="images/logos/GiteDeFrance_3Epis.png" alt="3 Épis" class="badge-img">
+                            <img src="images/logos/ecogite.jpg" alt="Ecogîte" class="badge-img">
+                            <img src="images/logos/Label-tourisme-et-handicap.jpg" alt="Handicap" class="badge-img">
+                        </div>
+
+                        <div class="badges">
+                            <span class="badge gris">⛰️ Montagne</span>
+                            <span class="badge gris">❄️ Ski</span>
+                        </div>
+
+                        <!-- Bloc Infos Techniques -->
+                        <ul class="gite-infos">
+                            <li>👥 <strong>15 personnes</strong> / 19 couchages</li>
+                            <li>🛏️ <strong>10 chambres</strong></li>
+                            <li>📐 <strong>350 m²</strong> (dont salle festive)</li>
+                            <li>🚿 2 Sde, 1 Sdb, 2 WC</li>
+                            <li>🐾 Animaux acceptés</li>
+                        </ul>
+
+                        <p style="font-size:0.9em; margin-bottom:10px;">Notre ancienne écurie (vaches) en pierres apparentes. Idéal pour les grands groupes avec sa salle festive réservée.</p>
             <!-- GÎTE 2 -->
             <article class="gite">
                 <img src="images/gite2.jpg" alt="Gîte 2 – Estaou">
@@ -130,6 +397,41 @@
                 </div>
             </article>
 
+            <!-- GÎTE 3 - RABIOUZE (15 pers) -->
+            <article class="gite">
+                <!-- Image façade -->
+                <img src="images/gite3-grand.jpg" alt="Façade du gîte Le Rabiouze">
+                <div class="gite-content">
+                    <div>
+                        <h3>Gîte 3 – Le Rabiouze</h3>
+                        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                            <span class="localisation-tag">📍 Hameau le Suc (43)</span>
+                            <span class="ref-tag">Ref : H43G023327</span>
+                        </div>
+
+                        <!-- Zone Logos (4 épis) -->
+                        <div class="logos">
+                            <img src="images/logos/GiteDeFrance_4Epis.png" alt="4 Épis" class="badge-img">
+                            <img src="images/logos/ecogite.jpg" alt="Ecogîte" class="badge-img">
+                            <img src="images/logos/Label-tourisme-et-handicap.jpg" alt="Handicap" class="badge-img">
+                        </div>
+
+                        <div class="badges">
+                            <!-- Autres badges texte -->
+                            <span class="badge gris">⛰️ Montagne</span>
+                            <span class="badge gris">❄️ Ski</span>
+                        </div>
+                        
+                        <!-- Bloc Infos Techniques -->
+                        <ul class="gite-infos">
+                            <li>👥 <strong>15 personnes</strong> / 22 couchages</li>
+                            <li>🛏️ <strong>13 chambres</strong></li>
+                            <li>📐 <strong>330 m²</strong></li>
+                            <li>🚿 1 Sdb, 5 Sde, 5 WC</li>
+                            <li>🐾 Animaux acceptés</li>
+                        </ul>
+
+                        <p style="font-size:0.9em; margin-bottom:10px;">Notre ancienne bergerie (moutons) en pierres apparentes. Grands espaces de vie, idéal pour les réunions de famille.</p>
             <!-- GÎTE 3 -->
             <article class="gite">
                 <img src="images/gite3.jpg" alt="Gîte 3 – Rabiouze">
@@ -161,6 +463,7 @@
     <!-- LE FOOTER EST GÉRÉ PAR JAVASCRIPT (layout.js) -->
     <div id="footer-placeholder"></div>
 
+    <!-- SCRIPT INDISPENSABLE -->
     <!-- SCRIPT INDISPENSABLE POUR AFFICHER LE MENU ET LE PIED DE PAGE -->
     <script src="layout.js"></script>
 
